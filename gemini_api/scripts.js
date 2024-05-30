@@ -22,5 +22,11 @@ async function run() {
   const response = await result.response;
   const text = response.text();
   console.log(text);
+  resultText.textContent = `${text}`;
 }
-run();
+const resultText = document.querySelector(".output");
+
+const genButton = document.querySelector("#butt");
+genButton.addEventListener("click", () => {
+  run();
+});
