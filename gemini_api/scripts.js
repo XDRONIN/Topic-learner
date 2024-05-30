@@ -14,19 +14,63 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 async function run() {
   // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  topic = document.getElementById("topic").value;
+  textBook = document.getElementById("testbook").value;
+  author = document.getElementById("author").value;
+  const prompt = `Explain ${topic}
 
-  const prompt =
-    "write a poem about the talk between a person and a spider he just killed";
+    Guidelines for the Explanation:
+    Introduction:
+    
+    Begin with a brief introduction to the topic.
+    Mention the significance of the topic in a broader context.
+    Reference Textbook:
+    
+    Refer exclusively to the specified textbook: ${textBook} by ${author}.
+    Ensure that all information is accurately derived from the given textbook.
+    Detailed Explanation:
+    
+    Break down the topic into clear, logical sections.
+    Use simple language that can be understood by everyone, including a 10-year-old.
+    Define any technical terms in an easy-to-understand manner.
+    Examples:
+    
+    Provide examples that are relatable and easy to understand.
+    Use analogies or scenarios that a child might encounter in everyday life.
+    Conclusion:
+    
+    Summarize the main points covered.
+    Highlight why understanding this topic is important.`;
 
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
   console.log(text);
-  resultText.textContent = `${text}`;
+  const newText = addLineBreaks(text);
+  resultText.innerHTML = `${newText}`;
 }
 const resultText = document.querySelector(".output");
+let topic;
+let author;
+let textBook;
 
 const genButton = document.querySelector("#butt");
 genButton.addEventListener("click", () => {
   run();
 });
+function addLineBreaks(text) {
+  // Replace '#' and '*' with empty string
+  const processedText = text.replace(/[#*]/g, "");
+
+  // Split the processed text into an array of lines
+  const lines = processedText.split(/\n/);
+  let formattedText = "";
+
+  // Iterate through each line
+  lines.forEach((line) => {
+    // Add line break before '#' or '*'
+    formattedText += line.replace(/(#|\*)/g, "<br>$1") + "<br>";
+  });
+
+  return formattedText;
+}
