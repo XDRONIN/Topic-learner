@@ -2,7 +2,9 @@
   flex: 1;
   border-radius: 10px;
   outline: 2px solid #9dde8b;
+  color: #006769;
   border: 0;
+  font-size: 15px;
   font-family: "CustomFont";
   background-color: #e6ff94;
   outline-offset: 3px;
@@ -15,9 +17,11 @@
 }
 #testbook {
   flex: 1;
+  color: #006769;
   border-radius: 10px;
   outline: 2px solid #9dde8b;
   border: 0;
+  font-size: 15px;
   font-family: "CustomFont";
   background-color: #e6ff94;
   outline-offset: 3px;
@@ -30,10 +34,12 @@
 }
 #author {
   flex: 1;
+  color: #006769;
   border-radius: 10px;
   outline: 2px solid #9dde8b;
   border: 0;
   font-family: "CustomFont";
+  font-size: 15px;
   background-color: #e6ff94;
   outline-offset: 3px;
   padding: 10px 1rem;
@@ -59,7 +65,7 @@ label {
   color: #9dde8b;
   margin: 10px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
 
   font-weight: bold;
 }
@@ -70,7 +76,7 @@ label {
   background: #40a578;
   font-size: 17px;
   font-weight: 500;
-  color: #2f5225;
+  color: #006769;
   border: 3px solid #40a578;
   border-radius: 8px;
   box-shadow: 0 0 0 #fec1958c;
@@ -228,4 +234,11 @@ button:hover .star-4 {
 @font-face {
   font-family: "CustomFont";
   src: url("shunsine-font/ShunsinedemoRegular-Yz7z8.otf") format("truetype");
+}
+h1 {
+  color: #9dde8b;
+  text-decoration: underline;
+
+  font-family: "CustomFont";
+  font-weight: bolder;
 }
