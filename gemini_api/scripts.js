@@ -14,6 +14,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 async function run() {
   // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  resultText.innerHTML = "";
   topic = document.getElementById("topic").value;
   textBook = document.getElementById("testbook").value;
   author = document.getElementById("author").value;
@@ -31,7 +32,7 @@ async function run() {
     Detailed Explanation:
     
     Break down the topic into clear, logical sections.
-    Use simple language that can be understood by everyone, including a 10-year-old.
+    Use simple language that can be understood by everyone.
     Define any technical terms in an easy-to-understand manner.
     Examples:
     
@@ -45,7 +46,7 @@ async function run() {
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
-  console.log(text);
+
   const newText = addLineBreaks(text);
   resultText.innerHTML = `${newText}`;
 }
