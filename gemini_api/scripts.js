@@ -12,6 +12,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 async function run() {
+  showLoading();
   // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   resultText.innerHTML = "";
@@ -48,12 +49,14 @@ async function run() {
   const text = response.text();
 
   const newText = addLineBreaks(text);
+  hideLoading();
   resultText.innerHTML = `${newText}`;
 }
 const resultText = document.querySelector(".output");
 let topic;
 let author;
 let textBook;
+const spinner = document.querySelector(".spinner");
 
 const genButton = document.querySelector("#butt");
 genButton.addEventListener("click", () => {
@@ -74,4 +77,10 @@ function addLineBreaks(text) {
   });
 
   return formattedText;
+}
+function showLoading() {
+  spinner.style.display = "flex";
+}
+function hideLoading() {
+  spinner.style.display = "none";
 }
